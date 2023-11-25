@@ -1,8 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const heading = React.createElement('div', {id: 'parent'}, React.createElement('h1', {}, 'Helle React'));
+//const heading = React.createElement('div', {id: 'parent'}, React.createElement('h1', {}, 'Hello React'));
+
+// React Element
+const jsxheading = <div id = "parent">
+    <h1>Hello React Element</h1>
+</div>
+
+// React functional component
+const HeadingComponent = () => ( //skipped return as this functions job is only to return one element
+    <div id = "parent">
+        {jsxheading}
+        <h1>Hello React component</h1>
+    </div>
+);
+//jsxHeading is a variable.
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const root2 = ReactDOM.createRoot(document.getElementById('aboveRoot'));
-root2.render(React.createElement('h1',null,'above root child'))
-root.render(heading); 
+//root.render(jsxheading); 
+root.render(<HeadingComponent/>);
