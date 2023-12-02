@@ -23,6 +23,7 @@
     flex-wrap: wrap;
 }
 .res-card{
+    width: 200px;
     padding: 5px;
     margin:5px;
     img.res-card-img{
