@@ -22,3 +22,28 @@
     - https
     - tree shaking - remove unwanted code
     - diff dev and prod builds
+
+# Food ordering app
+ * Header
+ *  -Logo
+ *  -Nav Items
+ * Body
+ *  -Search
+ *  -RestaurantCountainer
+ *  -RestaurantCard
+ *      -img
+ *      -name of res, star rating, cuisines, Eta
+ * Footer
+ *  -Copyright
+ *  -Links
+ *  -Address
+ *  -Contact
+
+
+# Default Export/Import
+export default comp/var;
+import comp from "path";
+
+# Named export/import
+export const comp/var;
+import {comp} from "path";

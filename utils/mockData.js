@@ -1,22 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-/**
- * Header
- *  -Logo
- *  -Nav Items
- * Body
- *  -Search
- *  -RestaurantCountainer
- *  -RestaurantCard
- *      -img
- *      -name of res, star rating, cuisines, Eta
- * Footer
- *  -Copyright
- *  -Links
- *  -Address
- *  -Contact
- */
 const restList = [
     {
         type: "restaurant",
@@ -531,69 +512,5 @@ const restList = [
         subtype: "basic",
       }
 ]
-const Header = () => {
-    return (
-        <div className='header'>
-            <div className='logo-container'>
-                <img className='logo' src='https://www.vhv.rs/dpng/d/459-4595986_cartoon-gourmet-cute-burger-png-and-vector-image.png'></img>
-            </div>
-            <div className='nav-items'>
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
 
-    )
-}
-const RestaurantCard = (props) => {
-    const {name, avgRating, cuisines, cloudinaryImageId, slaString} = props?.restData?.data;
-    return (
-        <div className='res-card' style={{backgroundColor: '#f0f0f0'}}>
-            <img className='res-card-img'
-            src={'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/'+cloudinaryImageId}></img>
-            <h3>{name}</h3>
-            <h4>{cuisines.join(', ')}</h4>
-            <h4>{avgRating}</h4>
-            <h4>{slaString}</h4>
-        </div>
-    )
-}
-const Body = () => {
-    return (
-        <div className='body'>
-            <div className='search'> Search </div>
-            <div className='res-container'>
-                {
-                    restList.map(
-                        restaurant => <RestaurantCard key = {restaurant.data.id} restData = {restaurant}/>)
-                }
-            </div>
-        </div> 
-    )
-}
-const Footer = () => {
-    return (
-        <div className='footer-container'>
-            <a>Copyright |</a>
-            <a href=''>Place order via zomato </a>
-            <h4>| Address: Manhattan, US |</h4>
-            <h4>Akshita Negi |</h4>
-        </div>
-    )
-}
-const AppLayout = () => {
-    return (
-        <div className='app'>
-            <Header />
-            <Body/>
-            <Footer/>
-        </div>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<AppLayout/>);
+export default restList;
