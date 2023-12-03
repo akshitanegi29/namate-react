@@ -43,3 +43,14 @@
         padding: 20px 5px;
     }
 }
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-card{
+    width: 200px;
+    height: 250px;
+    padding: 5px;
+    margin:5px;
+    background-color: lightgray;
+}
