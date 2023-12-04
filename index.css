@@ -15,9 +15,7 @@
         padding: 10px;
     }
 }
-.search{
-    padding: 10px;
-}
+
 .res-container{
     display: flex;
     flex-wrap: wrap;
@@ -53,4 +51,20 @@
     padding: 5px;
     margin:5px;
     background-color: lightgray;
+}
+.filter{
+    padding: 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    input{
+        height: 23px;
+    }
+    button{
+        margin: 5px;
+        height: 30px;
+    }
+    .filter-btn{
+        right: 10px;
+        position: absolute;
+    }
 }

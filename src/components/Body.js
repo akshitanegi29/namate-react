@@ -4,11 +4,17 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredRestList, setFilteredRestList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  //Whenever state variable updates, React triggera a reconcialiation cycle(re-renders the component)
+  console.log("Body Component Rendered!");
+
 
   //callback func of useEffect gets called after the comp has rendered
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   //API call
   const fetchData = async () => {
@@ -20,29 +26,42 @@ const Body = () => {
     setRestaurantList(
       json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants
     );
+    setFilteredRestList(json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants);
   };
 
-  if (restaurantList.length === 0) {
-    return <Shimmer />;
-  }
-
-  return (
+  //conditional rendering
+  return restaurantList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            className="search-box"
+            type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          ></input>
+          <button className="serch-btn" onClick={() => {
+            //filter restauraunts on the basis of search text
+            const filteredRestList = restaurantList.filter(rest => rest.info.name.toLowerCase().includes(searchText.toLowerCase()))
+            setFilteredRestList(filteredRestList)
+          }}>Search</button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
             const filteredList = restaurantList.filter(
               (rest) => rest.info.avgRating > 4
             );
-            setRestaurantList(filteredList);
+            setFilteredRestList(filteredList);
           }}
         >
           Top Rated Restaurants
         </button>
       </div>
       <div className="res-container">
-        {restaurantList.map((restaurant) => (
+        {filteredRestList.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} restData={restaurant} />
         ))}
       </div>
