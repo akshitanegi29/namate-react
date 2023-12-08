@@ -14,7 +14,7 @@ const Body = () => {
   //callback func of useEffect gets called after the comp has rendered
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []); //To run useEffect only once on the first render pass any empty array in the dependecy
 
   //API call
   const fetchData = async () => {
