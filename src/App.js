@@ -6,32 +6,41 @@ import Footer from './components/Footer';
 import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 
 const AppLayout = () => {
     return (
         <div className='app'>
             <Header />
-            <Body/>
+            <Outlet/>
             <Footer/>
         </div>
     )
 }
-
+// want to load children according to path
+// <Outlet/> will be REPLACED with child route element according to the path
+// <Link/> avoids reloading the whole page and just refershes the changed comp. This is why recat is called single page app because components are interchanging themselves and no reloading a new page
 const routeConfig = createBrowserRouter([
     {
         path: "/",
         element: <AppLayout/>,
+        children: [
+            {
+                path: '/',
+                element: <Body/>
+            },
+            {
+                path: "/About",
+                element: <About/>
+            },
+            {
+                path: "/Contact",
+                element: <Contact/>
+            }
+        ],
         errorElement: <Error/>
     },
-    {
-        path: "/About",
-        element: <About/>
-    },
-    {
-        path: "/Contact",
-        element: <Contact/>
-    }
+    
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
