@@ -1,2 +1,3 @@
 export const LOGO_URL = "https://www.vhv.rs/dpng/d/459-4595986_cartoon-gourmet-cute-burger-png-and-vector-image.png";
 export const CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+export const RESTAURANT_MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.4743879&lng=77.50399039999999&catalog_qa=undefined&submitAction=ENTER&restaurantId="

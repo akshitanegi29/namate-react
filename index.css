@@ -19,8 +19,14 @@
 .res-container{
     display: flex;
     flex-wrap: wrap;
+    a{
+        color: black;
+        text-decoration: none;
+    }
+    cursor: pointer;
 }
 .res-card{
+    height: 350px;
     width: 200px;
     padding: 5px;
     margin:5px;
@@ -66,5 +72,36 @@
     .filter-btn{
         right: 10px;
         position: absolute;
+    }
+}
+
+.restaurant-menu {
+    .restaurant-name{
+        color: #282c3f;
+        border-bottom: 1px dashed #d3d3d3;
+    }
+    p{
+        color: #7e808c;
+    }
+    h4 {
+        font-style: italic;
+        font-weight: 500;
+        color: #7e808c;
+    }
+    .menu-card {
+        border-top: 0.5px solid #d3d3d3;
+        h2{
+            padding: 0px 50%;
+        }
+        li{
+            padding: 8px 0px;
+            list-style-type: none;
+            border-bottom: 1px dashed #d3d3d3;
+            span{
+                margin-right: 50px;
+                justify-content: flex-end;
+                display: flex;
+            }
+        }
     }
 }
