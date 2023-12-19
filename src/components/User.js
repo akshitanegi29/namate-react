@@ -7,8 +7,20 @@ const User = (props) => {
   const { name, location } = props;
 
   useEffect(() => {
+    console.log("effect called");
     getUserData();
-  }, []);
+
+    //how to cleanup setinterval in func comp
+    const timer = setInterval(() => {
+      console.log("Timer func comp");
+    }, 2000);
+
+    //cleanup func
+    return () => {
+      console.log("return useEffect invoked");
+      clearInterval(timer)
+    };
+  }, [count]);
 
   async function getUserData() {
     const data = await fetch("https://api.github.com/users/akshitanegi29");
@@ -28,6 +40,7 @@ const User = (props) => {
       >
         Click me!
       </button>
+      <span>{count}</span>
     </div>
   );
 };

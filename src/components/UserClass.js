@@ -15,6 +15,16 @@ class UserClass extends React.Component {
     const data = await fetch("https://api.github.com/users/akshitanegi29");
     const json = await data.json();
     this.setState({ userInfo: json });
+    //for knowing the usecase of componentWillUnmount
+    this.timer = setInterval(() =>{
+        console.log('Interval called!');
+    }, 2000);
+  }
+
+  //componentWillUnmount is called when component is removed from DOM, Usually during navigating to some diff page.
+  componentWillUnmount(){
+    console.log('Comp unmounted.')
+    clearInterval(this.timer);
   }
 
   render() {
