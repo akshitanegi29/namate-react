@@ -23,6 +23,7 @@ const Header = () => {
             <Link to="contact">Contact Us</Link>
             </li>
           <li>Cart</li>
+          <li><Link to="grocery">GroceryMart</Link></li>
           <button
             className="login-toggle"
             onClick={() => {
