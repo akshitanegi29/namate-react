@@ -29,11 +29,11 @@ const User = (props) => {
   }
 
   return (
-    <div className="user-card">
+    <div className="user-card border-black border-2 w-[50%] m-2">
       <img src={userInfo.avatar_url}></img>
       <h2>Name: {userInfo.name}</h2>
       <p>Address: {userInfo.html_url}</p>
-      <button
+      <button className="bg-gray-300 rounded-lg w-20 m-2"
         onClick={() => {
           setCount(count + 1);
         }}

@@ -19,19 +19,19 @@ const RestaurantMenu = () => {
 
   return (
     <div className="restaurant-menu">
-      <h1 className="restaurant-name">{name}</h1>
-      <p>
+      <h1 className="restaurant-name border-b-[1px] border-[#d3d3d3]-400">{name}</h1>
+      <p className="text-[#7e808c]">
         {avgRating + " rating" + " | "}{" "}
         <span className="restaurant-cost"> {costForTwoMessage} </span>
       </p>
-      <h4>{cuisines.join(", ")}</h4>
-      <div className="menu-card">
-        <h2>MENU</h2>
+      <h4 className="text-[#7e808c] italic font-light">{cuisines.join(", ")}</h4>
+      <div className="menu-card border-t-[1px] border-[#d3d3d3]-400">
+        <h2 className="px-[50%] font-bold">MENU</h2>
         <ul>
           {itemCards.map((item) => (
-            <li key={item.card.info.id}>
+            <li key={item.card.info.id} className="py-2 border-b-[1px] border-[#d3d3d3]-400 px-0">
               {item.card.info.name}{" "}
-              <span>
+              <span className="mr-[50%] justify-end flex">
                 {" Rs."}
                 {item.card.info.price / 100 ||
                   item.card.info.defaultPrice / 100}

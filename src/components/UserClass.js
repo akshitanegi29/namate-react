@@ -33,11 +33,11 @@ class UserClass extends React.Component {
     const { login, avatar_url, html_url } = this.state.userInfo;
 
     return (
-      <div className="user-card">
+      <div className="user-card  border-black border-2 w-[50%] m-2">
         <img src={avatar_url}></img>
         <h2>Name(class): {login}</h2>
         <p>Address: {html_url}</p>
-        <button
+        <button className="bg-gray-300 rounded-lg w-20 m-2"
           onClick={() => {
             this.setState({
               count0: count0 + 1, //count0: this.state.count0 + 1 (same thing)
