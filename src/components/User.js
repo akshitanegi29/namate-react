@@ -11,14 +11,14 @@ const User = (props) => {
     getUserData();
 
     //how to cleanup setinterval in func comp
-    const timer = setInterval(() => {
-      console.log("Timer func comp");
-    }, 2000);
+    // const timer = setInterval(() => {
+    //   console.log("Timer func comp");
+    // }, 2000);
 
     //cleanup func
     return () => {
       console.log("return useEffect invoked");
-      clearInterval(timer)
+      //clearInterval(timer)
     };
   }, [count]);
 
