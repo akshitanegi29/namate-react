@@ -47,3 +47,6 @@ import comp from "path";
 # Named export/import
 export const comp/var;
 import {comp} from "path";
+
+# Tailwind config
+https://tailwindcss.com/docs/guides/parcel
