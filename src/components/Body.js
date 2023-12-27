@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withBestseller} from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -8,6 +8,9 @@ const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestList, setFilteredRestList] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  //HIGHER ORDER COMPONENT
+  const BestsellerRestaurantCard = withBestseller(RestaurantCard)
 
   //Whenever state variable updates, React triggera a reconcialiation cycle(re-renders the component)
   console.log("Body Component Rendered!");
@@ -26,9 +29,9 @@ const Body = () => {
     const json = await restData.json();
     // Optional Chaining
     setRestaurantList(
-      json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements.infoWithStyle.restaurants
     );
-    setFilteredRestList(json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants);
+    setFilteredRestList(json?.data?.cards[1]?.card?.card?.gridElements.infoWithStyle.restaurants);
   };
 
   const onlineStatus = useOnlineStatus()
@@ -70,7 +73,8 @@ const Body = () => {
       <div className="flex flex-wrap">
         {filteredRestList.map((restaurant) => (
           <Link to={"/restaurant/"+restaurant.info.id}>
-            <RestaurantCard key={restaurant.info.id} restData={restaurant} />
+            { restaurant.info.avgRating >= 4.5 ? <BestsellerRestaurantCard restData={restaurant}/> :
+            <RestaurantCard key={restaurant.info.id} restData={restaurant} /> }
            </Link> 
         ))}
       </div>
