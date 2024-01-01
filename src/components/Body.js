@@ -1,10 +1,14 @@
 import RestaurantCard, {withBestseller} from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
+import UserContext from "../../utils/UserContext";
 
 const Body = () => {
+  //reading context values
+  const {loggedInUser, setUsername} = useContext(UserContext);
+
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestList, setFilteredRestList] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -69,6 +73,10 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <div className="mx-3 my-2">
+          <label>User: </label>
+          <input className="border-2 border-black" value={loggedInUser} onChange={(e)=>setUsername(e.target.value)}></input>
+        </div>
       </div>
       <div className="flex flex-wrap">
         {filteredRestList.map((restaurant) => (

@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from 'react';
+import React, {lazy, Suspense, useContext, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Body from './components/Body';
@@ -9,6 +9,7 @@ import Error from './components/Error';
 //import GroceryMart from './components/GroceryMart';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import RestaurantMenu from './components/RestaurantMenu';
+import UserContext from '../utils/UserContext';
 
 
 //chunking
@@ -20,12 +21,27 @@ import RestaurantMenu from './components/RestaurantMenu';
 
 const GroceryMart = lazy(()=> import('./components/GroceryMart'));
 const AppLayout = () => {
+
+    const [username, setUsername]  = useState();
+
+    //authentication
+    useEffect(()=>{
+        //some auth call which return username
+        setUsername('Akshita Negi');
+    }, [])
+
     return (
+/**providing the context to child components.
+It means that header, outlet and footer are subscribed to context
+you can update the context using Context.Provider.
+note: new property- setUsername is added and existing property - loggedInuser is updated **/
+        <UserContext.Provider value={{loggedInUser: username, setUsername}}>
         <div className='app'>
             <Header />
             <Outlet/>
             <Footer/>
         </div>
+        </UserContext.Provider>
     )
 }
 // want to load children according to path

@@ -1,10 +1,14 @@
 import User from "./User";
 import UserClass from "./UserClass";
+import UserContext from "../../utils/UserContext";
+import { useContext } from "react";
 
 const About = () => {
+    //consuming the context
+    const {loggedInUser} = useContext(UserContext);
     return (
         <div>
-            <h1> Hola Foodies!
+            <h1 className="font-semibold text-lg"> Hola {loggedInUser}!!
             </h1>
             <h3>You are in the right place to kill your apetite :)</h3>
             <h4>Bon Apetite!</h4>
