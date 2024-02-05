@@ -50,3 +50,11 @@ import {comp} from "path";
 
 # Tailwind config
 https://tailwindcss.com/docs/guides/parcel
+
+# Redux Toolkit(RKT)
+    - install @reduxjs/toolkit and react-redux
+    - Build our store
+    - Connect store to app
+    - create slice(cartSlice)
+    - dispatch(action)
+    - Selector

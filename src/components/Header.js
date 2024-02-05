@@ -3,10 +3,15 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
   const {loggedInUser} = useContext(UserContext);
+
+  //subscribing to the store
+  const cartItems = useSelector(store => store.cart.items);
+
   return (
     <div className="flex justify-between border-black border-2 m-2">
       <div className="logo-container w-24">
@@ -23,7 +28,7 @@ const Header = () => {
           <li className="p-2">
             <Link to="contact">Contact Us</Link>
             </li>
-          <li className="p-2">Cart</li>
+          <li className="p-2">Cart ({cartItems.length} items)</li>
           <li className="p-2"><Link to="grocery">GroceryMart</Link></li>
           <li className="py-2 px-1"> {useOnlineStatus() ? "🟢": "🔴"}</li>
           <button

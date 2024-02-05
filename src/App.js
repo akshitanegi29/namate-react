@@ -10,6 +10,8 @@ import Error from './components/Error';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import RestaurantMenu from './components/RestaurantMenu';
 import UserContext from '../utils/UserContext';
+import { Provider } from 'react-redux';
+import appStore from '../utils/appStore';
 
 
 //chunking
@@ -31,17 +33,21 @@ const AppLayout = () => {
     }, [])
 
     return (
-/**providing the context to child components.
-It means that header, outlet and footer are subscribed to context
-you can update the context using Context.Provider.
-note: new property- setUsername is added and existing property - loggedInuser is updated **/
-        <UserContext.Provider value={{loggedInUser: username, setUsername}}>
-        <div className='app'>
-            <Header />
-            <Outlet/>
-            <Footer/>
-        </div>
-        </UserContext.Provider>
+
+        <Provider store={appStore}>
+            {/* providing the context to child components.
+            It means that header, outlet and footer are subscribed to context
+            you can update the context using Context.Provider.
+            note: new property- setUsername is added and existing property - loggedInuser is updated */}
+            <UserContext.Provider value={{loggedInUser: username, setUsername}}>
+                <div className='app'>
+                    <Header />
+                    <Outlet/>
+                    <Footer/>
+                </div>
+            </UserContext.Provider>
+        </Provider>
+
     )
 }
 // want to load children according to path
