@@ -12,6 +12,10 @@ const Header = () => {
   //subscribing to the store
   const cartItems = useSelector(store => store.cart.items);
 
+  /**
+   * const store = useSelector(store => store); this is less efficient as any change in store object will update this component.
+   * const cartItems = store.cart.items;  for example, userInfo in store is updated, it will update this comp as well.
+   */
   return (
     <div className="flex justify-between border-black border-2 m-2">
       <div className="logo-container w-24">
@@ -28,7 +32,9 @@ const Header = () => {
           <li className="p-2">
             <Link to="contact">Contact Us</Link>
             </li>
-          <li className="p-2">Cart ({cartItems.length} items)</li>
+          <li className="p-2">
+            <Link to="cart">Cart ({cartItems.length} items)</Link>
+            </li>
           <li className="p-2"><Link to="grocery">GroceryMart</Link></li>
           <li className="py-2 px-1"> {useOnlineStatus() ? "🟢": "🔴"}</li>
           <button

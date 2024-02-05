@@ -12,6 +12,7 @@ import RestaurantMenu from './components/RestaurantMenu';
 import UserContext from '../utils/UserContext';
 import { Provider } from 'react-redux';
 import appStore from '../utils/appStore';
+import Cart from './components/Cart';
 
 
 //chunking
@@ -81,6 +82,10 @@ const routeConfig = createBrowserRouter([
                     <GroceryMart/>
                 </Suspense>
                 )
+            },
+            {
+                path:"/Cart",
+                element:<Cart/>
             }
         ],
         errorElement: <Error/>
