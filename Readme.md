@@ -58,3 +58,18 @@ https://tailwindcss.com/docs/guides/parcel
     - create slice(cartSlice)
     - dispatch(action)
     - Selector
+
+# Types of testing (Developer)
+    - Unit testing
+    - Integration testing
+    - e2e testing
+
+# Setting up Resting
+    - install react testing lib
+    - install jest as RTL uses jest behind the scenes
+    - install jest dependencies - babel(babel-jest, @babel/core, @babel/preset-env)
+    - configure babel
+    - config parcel - parcel has its own babel. This will allow other tools(jest, eslint) to continue using your Babel config, but disable Babel transpilation in Parcel.
+    - config jest using npx jext --init
+    - install jsdom
+
